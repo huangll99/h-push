@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>test</title>
+</head>
+<body>
+测试websocket功能
+<script>
+  var ws = new WebSocket("ws://localhost:9999/ws");
+
+  ws.onmessage = function (event) {
+    var data = JSON.parse(event.data);
+    switch (data.type) {
+      case 1:
+        console.log(data.msg);
+        break;
+      case 2:
+        console.log(data);
+        break;
+      default:
+        console.log(data);
+    }
+  };
+
+  ws.onerror = function (event) {
+    console.error(event);
+  };
+
+  ws.onclose = function () {
+    console.log("websocket closed...");
+  };
+
+  ws.onopen = function () {
+    var packet = {
+      "type": 0, "msg": "001"
+    };
+    ws.send(JSON.stringify(packet));
+  }
+</script>
+</body>
+</html>
