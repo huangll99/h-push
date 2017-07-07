@@ -87,5 +87,12 @@
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.7.21</version>
     </dependency>
+
+    <!-- 异步处理队列 -->
+    <dependency>
+      <groupId>com.lmax</groupId>
+      <artifactId>disruptor</artifactId>
+      <version>3.3.5</version>
+    </dependency>
   </dependencies>
 </project>

@@ -1,4 +1,4 @@
-package com.hll.push.websocket.server;
+package com.hll.push.websocket;
 
 import com.hll.push.websocket.handler.TextWebSocketFrameHandler;
 import io.netty.bootstrap.ServerBootstrap;
