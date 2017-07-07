@@ -14,6 +14,7 @@
     1:响应连接成功
     2:推送数据
 
+## 流程
 
-
+![](https://github.com/huangll99/h-push/blob/master/push-flow.png)
 
