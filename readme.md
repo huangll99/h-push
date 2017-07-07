@@ -16,5 +16,8 @@
 
 ## 流程
 
-![](https://github.com/huangll99/h-push/blob/master/push-flow.png)
+![](https://github.com/huangll99/h-push/blob/master/doc/push-flow.png)
 
+## 集群方案(待实现)
+
+![](https://github.com/huangll99/h-push/blob/master/doc/push-cluster-flow.png)
