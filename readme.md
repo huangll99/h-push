@@ -21,3 +21,8 @@
 ## 集群方案(待实现)
 
 ![](https://github.com/huangll99/h-push/blob/master/doc/push-cluster-flow.png)
+
+
+## 程序流程图
+
+![](https://github.com/huangll99/h-push/blob/master/doc/code-flow.png)
