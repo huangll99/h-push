@@ -4,7 +4,6 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -38,6 +37,9 @@ public class MessageReceiveEntity {
 
   @Column(name = "update_time", columnDefinition = "timestamp")
   private Date updateTime;
+
+  @Column(name = "retry_times")
+  private int retryTimes;
 
   public String getId() {
     return id;
@@ -85,5 +87,13 @@ public class MessageReceiveEntity {
 
   public void setUpdateTime(Date updateTime) {
     this.updateTime = updateTime;
+  }
+
+  public int getRetryTimes() {
+    return retryTimes;
+  }
+
+  public void setRetryTimes(int retryTimes) {
+    this.retryTimes = retryTimes;
   }
 }
