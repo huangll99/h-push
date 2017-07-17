@@ -1,6 +1,6 @@
 package com.hll.push.websocket.handler;
 
-import com.hll.push.websocket.ClientIdToChannelMapInstance;
+import com.hll.push.websocket.ClientIdToChannelMap;
 import com.hll.push.websocket.Packet;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
@@ -26,7 +26,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
   private static final Logger logger = LoggerFactory.getLogger(TextWebSocketFrameHandler.class);
 
   @Autowired
-  ClientIdToChannelMapInstance clientIdToChannelMap;
+  ClientIdToChannelMap clientIdToChannelMap;
 
   private AttributeKey<String> CLIENT_ID = AttributeKey.newInstance("clientId");
 

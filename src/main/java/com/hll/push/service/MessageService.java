@@ -7,6 +7,7 @@ import com.hll.push.entities.MessageEntity;
 import com.hll.push.entities.MessageReceiveEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -25,6 +26,7 @@ public class MessageService {
   @Autowired
   private MessageReceiveRepository messageReceiveRepository;
 
+  @Transactional
   public void save(Message message) {
     MessageEntity messageEntity = new MessageEntity();
     messageEntity.setSendId(message.getFrom());

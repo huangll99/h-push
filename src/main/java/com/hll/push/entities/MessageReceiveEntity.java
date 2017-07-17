@@ -1,7 +1,10 @@
 package com.hll.push.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -12,16 +15,28 @@ import java.util.Date;
 @Table(name = "push_message_receive")
 public class MessageReceiveEntity {
 
+  @Id
+  @Column(name = "id", length = 32)
+  @NotEmpty
+  @GenericGenerator(name = "system-uuid", strategy = "uuid")
+  @GeneratedValue(generator = "system-uuid")
   private String id;
 
+  @Column(name = "message_id", length = 32)
+  @NotEmpty
   private String messageId;
 
+  @Column(name = "receiver_id", length = 32)
+  @NotEmpty
   private String receiverId;
 
+  @Column(name = "status")
   private int status;
 
+  @Column(name = "create_time", columnDefinition = "timestamp")
   private Date createTime;
 
+  @Column(name = "update_time", columnDefinition = "timestamp")
   private Date updateTime;
 
   public String getId() {

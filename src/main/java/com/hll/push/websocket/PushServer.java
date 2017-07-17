@@ -13,6 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
@@ -24,7 +26,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Written on 17/6/29.
  */
 @Component
-public class PushServer {
+public class PushServer implements ApplicationListener<ApplicationEvent> {
 
   private static Logger logger = LoggerFactory.getLogger(PushServer.class);
 
@@ -39,7 +41,13 @@ public class PushServer {
   private EventLoopGroup bossGroup = new NioEventLoopGroup(1);
   private EventLoopGroup workerGroup = new NioEventLoopGroup(Runtime.getRuntime().availableProcessors());
 
-  public void start() {
+  @Override
+  public void onApplicationEvent(ApplicationEvent applicationEvent) {
+    //spring容器启动之后,启动推送服务
+    start();
+  }
+
+  private void start() {
 
     //保证只能启动一次
     if (started.compareAndSet(false, true)) {

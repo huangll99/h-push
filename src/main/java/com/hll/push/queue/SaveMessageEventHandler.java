@@ -1,6 +1,7 @@
-package com.hll.push.service;
+package com.hll.push.queue;
 
 import com.hll.push.core.model.Message;
+import com.hll.push.service.MessageService;
 import com.lmax.disruptor.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

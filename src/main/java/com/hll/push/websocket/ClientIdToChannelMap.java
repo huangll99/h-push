@@ -11,7 +11,7 @@ import java.util.Map;
  * Written on 17/6/29.
  */
 @Component
-public class ClientIdToChannelMapInstance {
+public class ClientIdToChannelMap {
 
   /**
    * 维护client id和连接的关系,用于根据id查找channel
@@ -28,5 +28,9 @@ public class ClientIdToChannelMapInstance {
 
   public void removeChannel(String clientId) {
     clientIdToChannelMap.remove(clientId);
+  }
+
+  public boolean contain(String id) {
+    return clientIdToChannelMap.containsKey(id);
   }
 }

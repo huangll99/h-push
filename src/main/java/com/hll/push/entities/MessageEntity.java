@@ -1,5 +1,6 @@
 package com.hll.push.entities;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -16,7 +17,8 @@ public class MessageEntity {
   @Id
   @Column(name = "id", length = 32)
   @NotEmpty
-  @GeneratedValue
+  @GenericGenerator(name = "system-uuid", strategy = "uuid")
+  @GeneratedValue(generator = "system-uuid")
   private String id;
 
   @Column(name = "send_id", length = 32)
@@ -27,8 +29,7 @@ public class MessageEntity {
   @NotEmpty
   private String content;
 
-  @Column(name = "create_time")
-  @NotEmpty
+  @Column(name = "create_time",columnDefinition = "timestamp")
   private Date createTime;
 
   public String getId() {

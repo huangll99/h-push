@@ -8,7 +8,7 @@ push:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/demo?characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/push?characterEncoding=UTF-8
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
