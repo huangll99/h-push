@@ -3,29 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>test</title>
+  <style>
+    .connect {
+      width: 1000px;
+      height: 500px;
+      background-color: pink;
+      margin: 30px auto;
+    }
+
+    .connect .top {
+      padding: 30px;
+    }
+
+    li {
+      list-style: none;
+      border-bottom: 1px dashed #1f090c;
+      height: 30px;
+      line-height: 30px;
+    }
+  </style>
 </head>
 <body>
 测试websocket功能
+
+<br>
+
+<div class="connect">
+  <div class="top">
+    <input id="connectId" type="text" placeholder="请输入连接ID">
+    <button id="btn">连接</button>
+  </div>
+  <div class="content">
+    <ul id="messages">
+
+    </ul>
+  </div>
+</div>
 <script>
   var ws = new WebSocket("ws://localhost:9999/ws");
 
-  ws.onmessage = function (event) {
-    var data = JSON.parse(event.data);
-    switch (data.type) {
-      case 1:
-        console.log(data.msg);
-        document.write(data.msg);
-        break;
-      case 2:
-        console.log(data);
-        document.write(data.msg);
-        break;
-      default:
-        console.log(data);
-        document.write("<br>");
-        document.writeln(JSON.stringify(data));
-    }
-  };
 
   ws.onerror = function (event) {
     console.error(event);
@@ -35,11 +51,39 @@
     console.log("websocket closed...");
   };
 
-  ws.onopen = function () {
-    var packet = {
-      "type": 0, "msg": "001"
-    };
-    ws.send(JSON.stringify(packet));
+  var btn = document.getElementById("btn");
+  var connectInput = document.getElementById("connectId");
+  btn.onclick = function () {
+    var connectId = connectInput.value;
+    if (connectId) {
+      var packet = {
+        "type": 0, "msg": connectId
+      };
+      ws.send(JSON.stringify(packet));
+    }
+  };
+
+  var messages = document.getElementById("messages");
+  ws.onmessage = function (event) {
+    var data = JSON.parse(event.data);
+    switch (data.type) {
+      case 1:
+        console.log(data.msg);
+        append(data.msg);
+        break;
+      case 2:
+        console.log(data);
+        var msg = "发送人:" + data.msg.from + "   接收人:" + data.msg.to + "   消息:" + data.msg.content;
+        append(msg);
+        break;
+      default:
+        console.log(data);
+    }
+  };
+  function append(msg) {
+    var li = document.createElement("li");
+    li.innerHTML = msg;
+    messages.appendChild(li);
   }
 </script>
 </body>

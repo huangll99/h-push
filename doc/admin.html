@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      height: 100%;
+    }
+
+    .config {
+      height: 100%;
+    }
+
+    .el-menu-vertical-demo {
+      height: 100%;
+    }
+
+    .tool {
+      padding: 20px;
+    }
+
+    .data {
+      border-top: 2px solid #369;
+      padding: 5px;
+    }
+
+    .block {
+      text-align: right;
+    }
+
+    nav {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+
+    section {
+      margin-top: 60px;
+    }
+
+    #messages {
+      width: 1000px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <nav>
+    <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+      <el-menu-item index="0"></el-menu-item>
+      <el-menu-item index="0"></el-menu-item>
+      <el-menu-item index="0"></el-menu-item>
+      <el-menu-item index="1">消息列表</el-menu-item>
+      <el-menu-item index="2">接收列表</el-menu-item>
+      <el-menu-item index="3">在线用户列表</el-menu-item>
+    </el-menu>
+  </nav>
+  <section>
+
+    <div id="messages" class="grid-content bg-purple-light">
+      <div class="tool">
+        <el-form :inline="true" :model="formInline" class="demo-form-inline">
+          <el-form-item label="消息ID">
+            <el-input v-model="formInline.user"></el-input>
+          </el-form-item>
+          <el-form-item label="消息ID">
+            <el-input v-model="formInline.user"></el-input>
+          </el-form-item>
+          <el-form-item label="内容">
+            <el-input v-model="formInline.user"></el-input>
+          </el-form-item>
+          <el-form-item label="时间范围">
+            <el-date-picker
+                v-model="formInline.time"
+                type="datetimerange"
+                :picker-options="pickerOptions2"
+                placeholder="选择时间范围"
+                align="right">
+            </el-date-picker>
+          </el-form-item>
+
+          <el-form-item>
+            <el-button type="primary" >查询</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
+      <div class="data">
+        <el-table :data="tableData" border style="width: 100%">
+          <el-table-column label="消息ID" width="180">
+            <template scope="scope">
+              {{scope.row.messageId}}
+            </template>
+          </el-table-column>
+          <el-table-column label="发送人ID" width="180">
+            <template scope="scope">
+              {{scope.row.senderId}}
+            </template>
+          </el-table-column>
+          <el-table-column label="消息内容">
+            <template scope="scope">
+              {{scope.row.content}}
+            </template>
+          </el-table-column>
+          <el-table-column label="发送时间">
+            <template scope="scope">
+              {{scope.row.time}}
+            </template>
+          </el-table-column>
+          <el-table-column label="操作">
+            <template scope="scope">
+              <el-button type="primary" @click="handleEdit(scope.$index, scope.row)">
+                查看消息接收详情
+              </el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+      <div class="block">
+        <el-pagination
+            layout="prev, pager, next"
+            :total="1000">
+        </el-pagination>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+
+<script type="text/javascript">
+  new Vue({
+    el: "#app",
+    data: {
+      formInline:{},
+      activeIndex: '1',
+      activeIndex2: '1',
+      tableData: [{
+        messageId: "402899035d5f62ff015d5f913dfe001a",
+        senderId: "001",
+        content: "消息内容",
+        time:"发送时间"
+      },{
+        messageId: "402899035d5f62ff015d5f913dfe001a",
+        senderId: "001",
+        content: "消息内容",
+        time:"发送时间"
+      },{
+        messageId: "402899035d5f62ff015d5f913dfe001a",
+        senderId: "001",
+        content: "消息内容",
+        time:"发送时间"
+      },{
+        messageId: "402899035d5f62ff015d5f913dfe001a",
+        senderId: "001",
+        content: "消息内容",
+        time:"发送时间"
+      },{
+        messageId: "402899035d5f62ff015d5f913dfe001a",
+        senderId: "001",
+        content: "消息内容",
+        time:"发送时间"
+      },{
+        messageId: "402899035d5f62ff015d5f913dfe001a",
+        senderId: "001",
+        content: "消息内容",
+        time:"发送时间"
+      },{
+        messageId: "402899035d5f62ff015d5f913dfe001a",
+        senderId: "001",
+        content: "消息内容",
+        time:"发送时间"
+      },{
+        messageId: "402899035d5f62ff015d5f913dfe001a",
+        senderId: "001",
+        content: "消息内容",
+        time:"发送时间"
+      },{
+        messageId: "402899035d5f62ff015d5f913dfe001a",
+        senderId: "001",
+        content: "消息内容",
+        time:"发送时间"
+      },{
+        messageId: "402899035d5f62ff015d5f913dfe001a",
+        senderId: "001",
+        content: "消息内容",
+        time:"发送时间"
+      },{
+        messageId: "402899035d5f62ff015d5f913dfe001a",
+        senderId: "001",
+        content: "消息内容",
+        time:"发送时间"
+      }]
+    },
+    methods: {
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      handleOpen(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      handleClose(key, keyPath) {
+        console.log(key, keyPath);
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

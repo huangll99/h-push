@@ -14,7 +14,7 @@ public class Packet {
   private final static ObjectMapper mapper = new ObjectMapper();
 
   private int type;
-  private String msg;
+  private Object msg;
 
   public int getType() {
     return type;
@@ -24,11 +24,11 @@ public class Packet {
     this.type = type;
   }
 
-  public String getMsg() {
+  public Object getMsg() {
     return msg;
   }
 
-  public void setMsg(String msg) {
+  public void setMsg(Object msg) {
     this.msg = msg;
   }
 

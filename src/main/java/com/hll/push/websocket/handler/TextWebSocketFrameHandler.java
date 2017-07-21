@@ -53,7 +53,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
   }
 
   private void handleConnect(Packet packet, Channel channel) {
-    String clientId = packet.getMsg();
+    String clientId = (String) packet.getMsg();
     if (!StringUtils.isEmpty(clientId)) {
       clientIdToChannelMap.addChannel(clientId, channel);
       channel.attr(CLIENT_ID).set(clientId);
