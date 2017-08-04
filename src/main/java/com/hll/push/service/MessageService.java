@@ -27,7 +27,7 @@ public class MessageService {
   private MessageReceiveRepository messageReceiveRepository;
 
   @Transactional
-  public void save(Message message) {
+  public String save(Message message) {
     MessageEntity messageEntity = new MessageEntity();
     messageEntity.setSendId(message.getFrom());
     messageEntity.setContent(message.getContent());
@@ -47,5 +47,10 @@ public class MessageService {
 
     messageReceiveRepository.save(receivers);
 
+    return messageEntity.getId();
+  }
+
+  public void updateStatus(String messageId, String receiveId, int status) {
+    messageReceiveRepository.updateStatus(messageId, receiveId, status);
   }
 }
