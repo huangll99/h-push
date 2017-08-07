@@ -1,5 +1,7 @@
 package com.hll.push.websocket.handler;
 
+import com.hll.push.OfflineMessagePushTask;
+import com.hll.push.utils.SpringHelper;
 import com.hll.push.websocket.ClientIdToChannelMap;
 import com.hll.push.websocket.Packet;
 import io.netty.channel.Channel;
@@ -14,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.util.concurrent.ExecutorService;
+
 /**
  * 处理client的连接与断开,绑定clientId和channel
  * Author: huangll
@@ -27,6 +31,9 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
   @Autowired
   ClientIdToChannelMap clientIdToChannelMap;
+
+  @Autowired
+  ExecutorService offlineMessagePushExecutor;
 
   private AttributeKey<String> CLIENT_ID = AttributeKey.newInstance("clientId");
 
@@ -65,6 +72,10 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
       response.setMsg("connected !!!");
       TextWebSocketFrame frame = new TextWebSocketFrame(response.toJson());
       channel.writeAndFlush(frame);
+
+      //异步处理用户连接事件
+      offlineMessagePushExecutor.submit(new OfflineMessagePushTask(clientId));
     }
   }
+
 }

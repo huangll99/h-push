@@ -10,7 +10,7 @@ import java.util.Map;
  * Author: huangll
  * Written on 17/6/29.
  */
-@Component
+@Component("clientIdToChannelMap")
 public class ClientIdToChannelMap {
 
   /**

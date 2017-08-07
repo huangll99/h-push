@@ -41,6 +41,8 @@ public class MessageReceiveEntity {
   @Column(name = "retry_times")
   private int retryTimes;
 
+
+
   public String getId() {
     return id;
   }

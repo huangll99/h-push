@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Author: huangll
@@ -63,4 +64,8 @@ public class MessageEntity {
   public void setCreateTime(Date createTime) {
     this.createTime = createTime;
   }
+
+
+
+
 }

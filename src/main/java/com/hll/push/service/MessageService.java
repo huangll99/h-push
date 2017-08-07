@@ -1,5 +1,6 @@
 package com.hll.push.service;
 
+import com.google.common.collect.Maps;
 import com.hll.push.core.model.Message;
 import com.hll.push.dao.MessageReceiveRepository;
 import com.hll.push.dao.MessageRepository;
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -50,7 +53,13 @@ public class MessageService {
     return messageEntity.getId();
   }
 
+  @Transactional
   public void updateStatus(String messageId, String receiveId, int status) {
     messageReceiveRepository.updateStatus(messageId, receiveId, status);
+  }
+
+  public List<Map<String, Object>> getUnpushedMessages(String clientId) {
+    //查询未推送消息
+    return messageRepository.getUnpushedMessages(clientId);
   }
 }
