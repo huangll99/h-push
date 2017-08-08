@@ -1,7 +1,6 @@
 package com.hll.push.websocket.handler;
 
 import com.hll.push.OfflineMessagePushTask;
-import com.hll.push.utils.SpringHelper;
 import com.hll.push.websocket.ClientIdToChannelMap;
 import com.hll.push.websocket.Packet;
 import io.netty.channel.Channel;
@@ -78,4 +77,14 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
     }
   }
 
+  @Override
+  public void channelActive(ChannelHandlerContext ctx) throws Exception {
+   /* System.out.println("xxxxxxxxxxxxx");
+    Packet response = Packet.newInstance();
+    response.setType(Packet.Type.CONNECTED);
+    response.setMsg("connected !!!");
+    TextWebSocketFrame frame = new TextWebSocketFrame(response.toJson());
+    ctx.channel().writeAndFlush(frame);*/
+  }
 }
+
