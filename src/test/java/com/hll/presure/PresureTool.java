@@ -16,10 +16,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
+ * 压测工具
  * Author: huangll
  * Written on 17/8/7.
  */
-public class PresureTest {
+public class PresureTool {
 
   public static void main(String[] args) throws URISyntaxException, InterruptedException {
     NioEventLoopGroup eventLoopGroup = new NioEventLoopGroup(10);

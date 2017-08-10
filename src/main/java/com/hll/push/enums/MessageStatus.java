@@ -6,7 +6,7 @@ package com.hll.push.enums;
  */
 public enum MessageStatus {
 
-  Created(0), Pushed(1), Read(1);
+  Created(0), Pushed(1), Read(2);
 
   private int status;
 

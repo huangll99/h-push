@@ -18,4 +18,7 @@ public interface MessageReceiveRepository extends JpaRepository<MessageReceiveEn
   @Query(value = "update MessageReceiveEntity mr set mr.status=:status where mr.messageId=:messageId and mr.receiverId=:receiverId")
   void updateStatus(@Param("messageId") String messageId, @Param("receiverId") String receiverId, @Param("status") int status);
 
+  @Query("select count(mre) from MessageReceiveEntity mre where mre.receiverId=:receiverId and mre.status <2")
+  Integer getUnreadMsgCount(@Param("receiverId") String receiverId);
+
 }

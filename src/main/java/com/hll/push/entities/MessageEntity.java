@@ -65,7 +65,4 @@ public class MessageEntity {
     this.createTime = createTime;
   }
 
-
-
-
 }
