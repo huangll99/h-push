@@ -8,9 +8,9 @@ import com.hll.push.rest.PushResult;
 import com.hll.push.core.model.Message;
 import com.hll.push.queue.RealtimeMessageQueue;
 import com.hll.push.service.MessageService;
+import com.hll.push.websocket.ClientIdToChannelMap;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Author: huangll
@@ -34,6 +35,9 @@ public class RealtimeMessageController {
 
   @Autowired
   MessageService messageService;
+
+  @Autowired
+  ClientIdToChannelMap clientIdToChannelMap;
 
   @ApiOperation(value = "推送实时消息接口")
   @RequestMapping(value = "/message", method = RequestMethod.POST)
@@ -75,5 +79,12 @@ public class RealtimeMessageController {
   public PushResult markMsgRead(@RequestBody MessageReadMark messageReadMark) {
     messageService.markMsgRead(messageReadMark);
     return PushResult.builder().success(true).msg("ok").build();
+  }
+
+  @ApiOperation(value = "在线用户列表")
+  @RequestMapping(value = "/onlineUsers", method = RequestMethod.GET)
+  public PushRestResult<Set<String>> onlineUsers() {
+
+    return PushRestResult.builder().success(true).msg("ok").data(clientIdToChannelMap.onlineClients()).build();
   }
 }

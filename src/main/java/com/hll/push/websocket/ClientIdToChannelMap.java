@@ -5,6 +5,7 @@ import io.netty.channel.Channel;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Author: huangll
@@ -32,5 +33,9 @@ public class ClientIdToChannelMap {
 
   public boolean contain(String id) {
     return clientIdToChannelMap.containsKey(id);
+  }
+
+  public Set<String> onlineClients() {
+    return clientIdToChannelMap.keySet();
   }
 }
