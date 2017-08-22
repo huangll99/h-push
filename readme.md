@@ -17,7 +17,7 @@
 ## 单机版结构设计图
 ![](https://github.com/huangll99/h-push/blob/master/doc/push-design.png)
 
-## 集群方案(待实现)
+## 集群方案(地址:https://github.com/huangll99/push-cluster)
 
 ![](https://github.com/huangll99/h-push/blob/master/doc/push-cluster-flow.png)
 
