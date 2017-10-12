@@ -1,6 +1,5 @@
 package com.hll.push.dao;
 
-import com.hll.push.core.model.MessageReceive;
 import com.hll.push.entities.MessageReceiveEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
