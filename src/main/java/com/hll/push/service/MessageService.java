@@ -2,6 +2,7 @@ package com.hll.push.service;
 
 import com.hll.push.core.model.Message;
 import com.hll.push.core.model.MessageReadMark;
+import com.hll.push.core.model.MessageReceive;
 import com.hll.push.core.model.MessageSearch;
 import com.hll.push.dao.MessageReceiveRepository;
 import com.hll.push.dao.MessageRepository;
@@ -123,5 +124,10 @@ public class MessageService {
     messageReadMark.getMsgIds().stream().forEach(
         msgId -> messageReceiveRepository.updateStatus(msgId, messageReadMark.getUserId(), MessageStatus.Read.value())
     );
+  }
+
+  public List<MessageReceiveEntity> getMessageReceives(String messageId) {
+    List<MessageReceiveEntity> list = messageReceiveRepository.findByMessageId(messageId);
+    return list;
   }
 }

@@ -30,7 +30,7 @@ public class MessageEntity {
   @NotEmpty
   private String content;
 
-  @Column(name = "create_time",columnDefinition = "timestamp")
+  @Column(name = "create_time", columnDefinition = "timestamp")
   private Date createTime;
 
   public String getId() {

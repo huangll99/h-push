@@ -3,6 +3,7 @@ package com.hll.push.rest.controller;
 import com.hll.push.core.model.MessageReadMark;
 import com.hll.push.core.model.MessageSearch;
 import com.hll.push.entities.MessageEntity;
+import com.hll.push.entities.MessageReceiveEntity;
 import com.hll.push.rest.PushRestResult;
 import com.hll.push.rest.PushResult;
 import com.hll.push.core.model.Message;
@@ -86,5 +87,12 @@ public class RealtimeMessageController {
   public PushRestResult<Set<String>> onlineUsers() {
 
     return PushRestResult.builder().success(true).msg("ok").data(clientIdToChannelMap.onlineClients()).build();
+  }
+
+  @ApiOperation(value = "消息接收详情")
+  @RequestMapping(value = "/messageReceives/{messageId}", method = RequestMethod.GET)
+  public PushRestResult<List<MessageReceiveEntity>> messageReceives(@PathVariable("messageId") String messageId) {
+    List<MessageReceiveEntity> messageReceives = messageService.getMessageReceives(messageId);
+    return PushRestResult.builder().success(true).msg("ok").data(messageReceives).build();
   }
 }

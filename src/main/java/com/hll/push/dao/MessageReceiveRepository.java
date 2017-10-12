@@ -1,11 +1,14 @@
 package com.hll.push.dao;
 
+import com.hll.push.core.model.MessageReceive;
 import com.hll.push.entities.MessageReceiveEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Author: huangll
@@ -21,4 +24,5 @@ public interface MessageReceiveRepository extends JpaRepository<MessageReceiveEn
   @Query("select count(mre) from MessageReceiveEntity mre where mre.receiverId=:receiverId and mre.status <2")
   Integer getUnreadMsgCount(@Param("receiverId") String receiverId);
 
+  List<MessageReceiveEntity> findByMessageId(String messageId);
 }
