@@ -15,6 +15,7 @@
     2:推送数据
 
 ## 单机版结构设计图
+
 ![](https://github.com/huangll99/h-push/blob/master/doc/push-design.png)
 
 ## 集群方案(地址:https://github.com/huangll99/push-cluster)
@@ -25,3 +26,7 @@
 ## 程序流程图
 
 ![](https://github.com/huangll99/h-push/blob/master/doc/code-flow.png)
+
+## 后台管理页面
+
+![](https://github.com/huangll99/h-push/blob/master/doc/admin.png)
